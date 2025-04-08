@@ -44,8 +44,10 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
     ln -s /usr/bin/pip3 /usr/bin/pip && \
     rm get-pip.py
 
+RUN pip install boxmot
+
 # Install PyTorch with CUDA 11.8 support
-RUN pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
+# RUN pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
 
 # Create a user with the specified UID
 ARG USER_ID

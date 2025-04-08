@@ -16,6 +16,9 @@ vscode/
 # Output video
 *.avi
 
+# Zip files
+*.zip
+
 # C extensions
 *.so
 
