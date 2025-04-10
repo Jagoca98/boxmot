@@ -6,6 +6,7 @@ import numpy as np
 from tqdm import tqdm
 from pathlib import Path
 from boxmot.trackers.botsort.botsort import BotSort
+# from boxmot.trackers.strongsort.strongsort import StrongSort
 
 
 label_map = {}
@@ -70,24 +71,12 @@ def get_detections_for_frame(frame_name, det_dir="/datasets/eris/detections"):
 if __name__ == "__main__":
     # Load a pre-trained Keypoint R-CNN model from torchvision
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-    ckpt = torch.load("/weights/shufflenet-bee1b265.pth.tar", map_location="cpu")
 
     # Initialize the tracker
     tracker = BotSort(
-        reid_weights=ckpt,
+        reid_weights=Path("/weights/osnet_x0_25_market1501.pt"),
         device=device,
         half=True,
-        per_class=False,
-        track_high_thresh=0.6,
-        track_low_thresh=0.1,
-        new_track_thresh=0.7,
-        track_buffer=30,
-        match_thresh=0.8,
-        proximity_thresh=0.5,
-        appearance_thresh=0.25,
-        cmc_method="ecc",  # or "sof"
-        frame_rate=30,
-        fuse_first_associate=False,
         with_reid=True
         )
 

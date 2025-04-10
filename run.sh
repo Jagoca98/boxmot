@@ -24,7 +24,7 @@ echo "Generating the data..."
 if docker run \
         --name ${DOCKER_IMAGE_NAME} \
         -v ./$WORKSPACE:/$WORKSPACE/ \
-        -v ./$WORKSPACE/weights:/weights:ro \
+        -v ./$WORKSPACE/weights:/weights:rw \
         -v ./data/datasets:/datasets:ro \
         -v ./data/output:/data/output:rw \
         -u $USER_ID:$GROUP_ID \
